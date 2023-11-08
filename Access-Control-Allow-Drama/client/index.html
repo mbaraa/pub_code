@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Toot</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body style="background-color: #121212">
+    <button onclick="makeRequest()">Make Request</button>
+    <br />
+    <span id="result" style="color: white">Hello YouTube!</span>
+
+    <script>
+      async function makeRequest() {
+        await fetch("http://localhost:8080/", {
+          method: "GET",
+          mode: "cors",
+        })
+          .then((resp) => resp.text())
+          .then((body) => {
+            document.getElementById("result").innerHTML = body;
+            console.log(body);
+          });
+      }
+    </script>
+  </body>
+</html>
