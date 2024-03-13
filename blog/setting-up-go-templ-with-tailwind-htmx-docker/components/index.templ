@@ -1,0 +1,21 @@
+package components
+
+script doTheThing() {
+    window.alert("yoho")
+}
+
+templ main() {
+	<main>
+		something in main
+		<button
+			onClick={ doTheThing() }
+			class="bg-pink-600 rounded-md"
+		>
+			Click me
+		</button>
+	</main>
+}
+
+templ Index() {
+	@Layout(main())
+}
