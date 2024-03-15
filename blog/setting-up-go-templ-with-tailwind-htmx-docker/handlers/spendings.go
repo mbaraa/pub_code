@@ -28,6 +28,8 @@ func (s *SpendingsHandler) HandleAddSpendingItem(w http.ResponseWriter, r *http.
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+
+	w.Header().Set("HX-Redirect", "/")
 }
 
 func (s *SpendingsHandler) HandleRemoveSpendingItem(w http.ResponseWriter, r *http.Request) {
@@ -42,6 +44,8 @@ func (s *SpendingsHandler) HandleRemoveSpendingItem(w http.ResponseWriter, r *ht
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+
+	w.Header().Set("HX-Redirect", "/")
 }
 
 func (s *SpendingsHandler) HandleUpdateSpendingItem(w http.ResponseWriter, r *http.Request) {
@@ -63,4 +67,6 @@ func (s *SpendingsHandler) HandleUpdateSpendingItem(w http.ResponseWriter, r *ht
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+
+	w.Header().Set("HX-Redirect", "/")
 }
