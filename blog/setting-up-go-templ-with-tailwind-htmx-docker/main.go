@@ -9,7 +9,6 @@ import (
 	"spendings/db"
 	"spendings/handlers"
 	"spendings/services"
-	"spendings/session"
 )
 
 //go:embed static/*
@@ -18,8 +17,6 @@ var static embed.FS
 //go:generate npx tailwindcss build -i static/css/style.css -o static/css/tailwind.css -m
 
 func main() {
-	session.PrintPassword()
-
 	ctx := context.Background()
 
 	balanceStore := db.NewBalanceStoreJson()
