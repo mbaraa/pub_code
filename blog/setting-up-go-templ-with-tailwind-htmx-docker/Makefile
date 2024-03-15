@@ -5,6 +5,7 @@ BINARY_NAME=spendings
 # build builds the tailwind css sheet, and compiles the binary into a usable thing.
 build:
 	go mod tidy && \
+	templ generate && \
 	go generate && \
 	go build -ldflags="-w -s" -o ${BINARY_NAME}
 
