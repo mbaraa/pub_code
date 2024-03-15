@@ -1,5 +1,5 @@
 *templ.go
 *templ.txt
 static/css/tailwind.css
-tailwindcss/node_modules/
+node_modules/
 spendings
