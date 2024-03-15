@@ -1,0 +1,38 @@
+package components
+
+import "spendings/db"
+import "fmt"
+
+script deleteItem(id string) {
+    console.log("deleting", id)
+}
+
+script updateItem(id string, newValue db.Spending) {
+    window.alert("not implemented")
+}
+
+templ Spendings(spendings []db.Spending) {
+	<section class="w-full pt-5">
+		<div class="m-auto w-fit flex flex-col gap-2">
+			for _, s := range spendings {
+				<div
+					class={ "rounded-md p-2 min-w-[400px] ",
+            templ.KV("bg-green-400", s.Price < 0),
+            templ.KV("bg-red-400", s.Price > 0) }
+				>
+					<div class="flex justify-between">
+						<div>
+							<span class="font-bold text-lg">{ s.Reason }</span>
+							&colon;&nbsp;<span>${ fmt.Sprint(s.Price) }</span>
+						</div>
+						<span>{ s.SpentAt.Format("01-Feb-2006") }</span>
+					</div>
+					<div class="float-right">
+						<button class="font-bold uppercase bg-purple-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300" onClick={ deleteItem(s.Id) }>Delete</button>
+						<button class="font-bold uppercase bg-blue-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300" onClick={ updateItem("", db.Spending{}) }>Update</button>
+					</div>
+				</div>
+			}
+		</div>
+	</section>
+}

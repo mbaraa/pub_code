@@ -1,21 +1,14 @@
 package components
 
-script doTheThing() {
-    window.alert("yoho")
+import "spendings/db"
+
+templ Index(balance int64, spendings []db.Spending) {
+	@Layout(main(balance, spendings))
 }
 
-templ main() {
-	<main>
-		something in main
-		<button
-			onClick={ doTheThing() }
-			class="bg-pink-600 rounded-md"
-		>
-			Click me
-		</button>
+templ main(balance int64, spendings []db.Spending) {
+	<main class="w-full h-screen bg-pink-100">
+		@Balance(balance)
+		@Spendings(spendings)
 	</main>
-}
-
-templ Index() {
-	@Layout(main())
 }

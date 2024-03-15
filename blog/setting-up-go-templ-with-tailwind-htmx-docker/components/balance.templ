@@ -1,0 +1,11 @@
+package components
+
+import "fmt"
+
+templ Balance(b int64) {
+	<section class="w-full pt-5">
+		<div class="m-auto w-fit py-3 px-12 border border-red-300 rounded-lg">
+			<span class="text-xl">Current Balance: <b>{ fmt.Sprint(b) }</b></span>
+		</div>
+	</section>
+}
