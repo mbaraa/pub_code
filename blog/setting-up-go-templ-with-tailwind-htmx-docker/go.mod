@@ -1,5 +1,5 @@
 module spendings
 
-go 1.21.7
+go 1.22
 
-require github.com/a-h/templ v0.2.598 // indirect
+require github.com/a-h/templ v0.2.598
