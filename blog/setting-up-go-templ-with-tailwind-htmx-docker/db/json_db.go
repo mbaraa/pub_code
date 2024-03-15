@@ -17,6 +17,16 @@ const dbFilePath = "./db.json"
 // will be used with the json database implementations
 var jsonMgr = &storeManager{}
 
+func init() {
+	_, err := os.Stat(dbFilePath)
+	if os.IsNotExist(err) {
+		_, err = os.Create(dbFilePath)
+		if err != nil {
+			panic(err)
+		}
+	}
+}
+
 type storeSchema struct {
 	Spendings []Spending `json:"spendings"`
 	Balance   int64      `json:"balance"`
