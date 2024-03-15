@@ -3,10 +3,8 @@ package db
 import "time"
 
 type Spending struct {
-	Id     string `json:"id"`
-	Reason string `json:"reason"`
-	// Price is the field's price, which is stored as int (keeping a 3 digits precision when converting into an apparent float)
-	// so that precision isn't intacket by the float's magic stuff.
+	Id      string    `json:"id"`
+	Reason  string    `json:"reason"`
 	Price   int64     `json:"price"`
 	SpentAt time.Time `json:"spent_at"`
 }
