@@ -3,17 +3,28 @@ package components
 import "spendings/db"
 import "fmt"
 
-script deleteItem(id string) {
-    console.log("deleting", id)
-}
-
-script updateItem(id string, newValue db.Spending) {
-    window.alert("not implemented")
+templ newSpending() {
+	<div
+		class="p-5 rounded-xl bg-blue-300"
+	>
+		<h2>Add new item</h2>
+		<form
+			hx-post="/api/spending"
+			hx-ext="json-enc"
+			hx-target="this"
+			hx-swap="none"
+		>
+			<input type="text" name="reason" placeholder="Reason" required/>
+			<input type="number" min="-2000" max="2000" name="price" placeholder="Price" required/>
+			<button type="submit" class="font-bold uppercase bg-purple-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300">Add</button>
+		</form>
+	</div>
 }
 
 templ Spendings(spendings []db.Spending) {
 	<section class="w-full pt-5">
 		<div class="m-auto w-fit flex flex-col gap-2">
+			@newSpending()
 			for _, s := range spendings {
 				<div
 					class={ "rounded-md p-2 min-w-[400px] ",
@@ -28,8 +39,17 @@ templ Spendings(spendings []db.Spending) {
 						<span>{ s.SpentAt.Format("01-Feb-2006") }</span>
 					</div>
 					<div class="float-right">
-						<button class="font-bold uppercase bg-purple-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300" onClick={ deleteItem(s.Id) }>Delete</button>
-						<button class="font-bold uppercase bg-blue-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300" onClick={ updateItem("", db.Spending{}) }>Update</button>
+						<button
+							class="font-bold uppercase bg-purple-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300"
+							hx-delete={ fmt.Sprintf("/api/spending?id=%s", s.Id) }
+						>
+							Delete
+						</button>
+						<button
+							class="font-bold uppercase bg-blue-300 hover:bg-white py-1 px-4 rounded-xl border-purple-300"
+						>
+							Update
+						</button>
 					</div>
 				</div>
 			}
