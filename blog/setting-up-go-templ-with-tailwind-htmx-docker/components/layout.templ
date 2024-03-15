@@ -9,6 +9,7 @@ templ Layout(children ...templ.Component) {
 			<title>The Spending Log Thingy</title>
 			<link href="/static/css/tailwind.css" rel="stylesheet"/>
 			<script src="/static/js/htmx.min-1.9.10.js"></script>
+			<script src="/static/js/json-enc.js"></script>
 		</head>
 		<body>
 			for _, child := range children {
