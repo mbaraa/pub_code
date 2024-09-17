@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.6)
-project(LibCairo)
+project(LibAlsa)
 
 # Add the static library
-add_library(cairo STATIC cairo.c)
+add_library(alsa STATIC alsa.c)
 
 # Install the static library
-install(TARGETS cairo DESTINATION .)
-
+install(TARGETS alsa DESTINATION .)
